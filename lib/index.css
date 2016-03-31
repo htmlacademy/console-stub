@@ -25,18 +25,25 @@
   background: #f8faf3;
 }
 
+.console-container__code span
+{
+  position: relative;
+}
+
 .console-container__code span:hover::after
 {
   content: attr(class);
-  position: relative;
-  top: -15px;
-  right: -15px;
   padding: 3px 6px;
   font-size: .9em;
   font-style: italic;
   border: 1px dashed;
   border-radius: 4px;
-  opacity: .8;
+  margin: -1em 0 0 8px;
+  display: inline-block;
+  vertical-align: top;
+  position: absolute;
+  background-color: white;
+  z-index: 100;
 }
 
 .console-container__code .undefined

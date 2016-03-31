@@ -2,6 +2,7 @@
 // @see http://chaijs.com/api/bdd/
 
 /* global describe, beforeEach, afterEach, it, expect */
+/*eslint no-unused-vars: ["error", { "varsIgnorePattern": "test*" }]*/
 
 describe('Console', function() {
   var testDomContext;
@@ -127,6 +128,62 @@ describe('Console', function() {
       '\n\nlog:  {\n  ' +
       '<span class="key">"key":</span> ' +
       '<span class="string">"value"</span>' +
+      '\n}\n' +
+      '</pre>';
+
+    jsConsole.log(codeToLog);
+
+    expect(jsConsole.getLogSource()).to.equal(reference);
+  });
+
+  it('API: should log function', function() {
+    var codeToLog = function() {
+      var testVariable = 'method code';
+    };
+
+    var reference = '<h3 class="console-container__header">Демо–Консоль</h3>' +
+      '<pre class="console-container__code">\n\nlog:  ' +
+      '<span class="function">function () {\n      var testVariable = \'method code\';\n    }</span>' +
+      '\n' +
+      '</pre>';
+
+    jsConsole.log(codeToLog);
+
+    expect(jsConsole.getLogSource()).to.equal(reference);
+  });
+
+  it('API: should log object method: function', function() {
+    var codeToLog = {
+      method: function() {
+        var testVariable = 'method code';
+      }
+    };
+    var reference = '<h3 class="console-container__header">Демо–Консоль</h3>' +
+      '<pre class="console-container__code">' +
+      '\n\nlog:  {\n  ' +
+      '<span class="key">"method":</span> ' +
+      '<span class="string">"function () {\\n        var testVariable = \'method code\';\\n      }"' +
+      '</span>' +
+      '\n}\n' +
+      '</pre>';
+
+    jsConsole.log(codeToLog);
+
+    expect(jsConsole.getLogSource()).to.equal(reference);
+  });
+
+  it('API: should log array item: function', function() {
+    var codeToLog = {
+      method: function() {
+        var testVariable = 'method code';
+      }
+    };
+    var reference = '<h3 class="console-container__header">Демо–Консоль</h3>' +
+      '<pre class="console-container__code">' +
+      '\n\nlog:  {\n  ' +
+      '<span class="key">"method":</span> ' +
+      '<span class="string">"function () {\\n        var testVariable = \'method code\';\\n      }"' +
+      '</span>' +
       '\n}\n' +
       '</pre>';
 

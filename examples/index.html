@@ -11,29 +11,37 @@
 <script src="/lib/index.js"></script>
 
 <script>
-  var jsConsole = jsConsoleInit(document.querySelector('.console-container'));
-  console.log = jsConsole.log;
+  window.jsConsole = jsConsoleInit(document.querySelector('.console-container'));
 </script>
 
 <script>
-  console.log(undefined);
+  jsConsole.log(undefined);
 
-  console.log(NaN);
+  jsConsole.log(NaN);
 
-  console.log(null);
+  jsConsole.log(null);
 
-  console.log(true);
+  jsConsole.log(true);
 
-  console.log(100);
+  jsConsole.log(100);
 
-  console.log('Here is console log');
+  jsConsole.log('Here is console log');
 
-  console.log("current year: ", (new Date()).getFullYear());
+  jsConsole.log("current year: ", (new Date()).getFullYear());
 
-  console.log([
+  jsConsole.log([
     {key1: 'value1'},
     {key2: 'value2'}
   ]);
+
+  jsConsole.log(function() { var testVariable = 'method code'; });
+
+  jsConsole.log([1, function() { var testVariable = 'method code'; }]);
+
+  jsConsole.log({
+    method: function() { var testVariable = 'method code'; }
+  });
+
 </script>
 </body>
 </html>

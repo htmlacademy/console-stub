@@ -43,5 +43,13 @@
   });
 
 </script>
+
+<script>
+  jsConsole.onlog = function(data) {
+    alert(data[0]); // data — массив агрументов метода `log`
+  };
+
+  jsConsole.log('Этот код был обработан в методе jsConsole#onlog');
+</script>
 </body>
 </html>

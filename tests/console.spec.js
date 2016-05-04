@@ -212,4 +212,18 @@ describe('Console', function() {
 
     expect(jsConsole.getLogSource()).to.equal(reference);
   });
+
+  it('API: should add log handler', function() {
+    var codeToLog = 'this code should pass to log handler';
+    var reference;
+
+    // TODO: refactor with https://github.com/chaijs/chai-spies
+    jsConsole.onlog = function(logData) {
+      reference = logData[0]; // logData is arguments array
+    };
+
+    jsConsole.log(codeToLog);
+
+    expect(codeToLog).to.equal(reference);
+  });
 });

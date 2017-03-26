@@ -70,7 +70,7 @@ describe('Console', function () {
 
   describe('#init:', function () {
     it('should create console stub with API methods', function () {
-      expect(jsConsole).to.have.all.keys('log', 'error', 'clean', 'getLogSource');
+      expect(jsConsole).to.have.all.keys('log', 'error', 'clean', 'getLogSource', 'logDeep');
     });
 
     it('should create HTML console stub ', function () {
@@ -175,6 +175,15 @@ describe('Console', function () {
 
   it('API: should log object', function () {
     jsConsole.log({key: 'value'});
+
+    assert('log: {\n  ' +
+      '<span class="key">key</span>: ' +
+      '<span class="string">"value"</span>' +
+      '\n}');
+  });
+
+  it('API: should log deeply', function () {
+    jsConsole.logDeep({key: 'value'}, 10);
 
     assert('log: {\n  ' +
       '<span class="key">key</span>: ' +

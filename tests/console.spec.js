@@ -70,7 +70,7 @@ describe('Console', function () {
 
   describe('#init:', function () {
     it('should create console stub with API methods', function () {
-      expect(jsConsole).to.have.all.keys('log', 'error', 'clean', 'getLogSource', 'logDeep');
+      expect(jsConsole).to.have.all.keys('log', 'error', 'clean', 'getLogSource', 'logDeep', 'extend');
     });
 
     it('should create HTML console stub ', function () {

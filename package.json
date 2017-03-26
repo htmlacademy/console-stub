@@ -1,6 +1,6 @@
 {
   "name": "demo-console",
-  "version": "2.2.0",
+  "version": "2.2.1",
   "description": "Inbrowser Demo Console",
   "main": "lib/index.js",
   "scripts": {

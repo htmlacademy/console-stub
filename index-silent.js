@@ -424,15 +424,15 @@
 (function(global) {
     var CSS_URL = "//htmlacademy.github.io/demo-console/index.css";
     var errors = [];
-    var collectErr = function(err) {
-        errors.push(err);
+    var collectErr = function() {
+        errors.push(arguments);
     };
     global.onerror = collectErr;
     global.console.warn = collectErr;
     global.console.error = collectErr;
     var messages = [];
-    var collectMsg = function(msg) {
-        messages.push(msg);
+    var collectMsg = function() {
+        messages.push(arguments);
     };
     global.console.info = collectMsg;
     global.console.log = collectMsg;
@@ -442,11 +442,11 @@
         var jsConsole = global.jsConsoleInit(div);
         global.document.body.appendChild(div);
         jsConsole.extend(global.console);
-        errors.forEach(function(error) {
-            jsConsole.error(error);
+        errors.forEach(function(args) {
+            jsConsole.error.apply(jsConsole, args);
         });
-        messages.forEach(function(msg) {
-            jsConsole.log(msg);
+        messages.forEach(function(args) {
+            jsConsole.log.apply(jsConsole, args);
         });
         global.onerror = function(error) {
             jsConsole.error(error);
